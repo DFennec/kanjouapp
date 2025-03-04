@@ -23,7 +23,7 @@ public class KanjiController {
 	}
     
     @GetMapping("/JLPT/{level}")
-    public List<Kanji> getKanji(@PathVariable Integer level){
-		return kanjiService.getKanjiByJLPT(level);
+    public List<Kanji> getKanjiByJLPT(@PathVariable Integer jlptLevel){
+		return kanjiService.getKanjiByjlptLevel(jlptLevel);
 	}
 }
