@@ -28,4 +28,13 @@ public class KanjiService {
 		}
 		throw new IllegalStateException("JLPT levels go from 5 to 1.");
 	}
+
+	public Kanji saveKanji(Kanji kanji) {
+		Optional<Kanji> kanjiByKanji=kanjiRepository.findKanjiByKanji(kanji.getKanji());
+		if(kanjiByKanji.isPresent()){
+			throw new IllegalStateException("Kanji already stored.");
+		}
+		return kanjiRepository.save(kanji);
+	}
+
 }
