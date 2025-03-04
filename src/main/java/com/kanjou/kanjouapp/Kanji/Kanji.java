@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.lang.NonNull;
 
+import com.kanjou.kanjouapp.Progress.Progress;
 import com.kanjou.kanjouapp.Vocabulary.Vocabulary;
 
 import jakarta.persistence.CascadeType;
@@ -30,12 +31,14 @@ public class Kanji {
 
     @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Vocabulary> vocabulary = new ArrayList<Vocabulary>();
+    @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Progress> progress = new ArrayList<Progress>();
 
-
-        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary ) {
+        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary, List<Progress> progress) {
             this.kanji = kanji;
             this.jlptLevel = jlptLevel;
             this.vocabulary = vocabulary; 
+            this.progress = progress;
         }
 
         public Kanji() {
@@ -44,6 +47,14 @@ public class Kanji {
 
         public Long getId() {
             return id;
+        }
+
+        public List<Vocabulary> getVocabulary() {
+            return vocabulary;
+        }
+
+        public List<Progress> getProgress() {
+            return progress;
         }
 
         public String getKanji() {

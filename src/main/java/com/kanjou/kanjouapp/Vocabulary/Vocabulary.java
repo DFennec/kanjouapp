@@ -42,6 +42,14 @@ public class Vocabulary {
         this.kanji = kanji;
     }
 
+    public List<ExampleSentences> getExampleSentences() {
+        return exampleSentences;
+    }
+
+    public Kanji getKanji() {
+        return kanji;
+    }
+
     public Vocabulary() {
 
     }
