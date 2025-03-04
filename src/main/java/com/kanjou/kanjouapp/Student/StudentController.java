@@ -32,17 +32,17 @@ public class StudentController {
 		return studentService.getStudentById(id);
 	}
 
-    @PostMapping("/save")
+    @PostMapping("/")
 	public Student saveStudent(@RequestBody Student student){
 		return studentService.saveStudent(student);
 	}
 
-    @PatchMapping("/update")
+    @PatchMapping("/")
 	public Student updateStudent(@RequestBody Student student){
 		return studentService.updateStudent(student);
 	}
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
 	public void deleteStudent(@PathVariable Long id){
 		studentService.deleteStudent(id);
 	}
