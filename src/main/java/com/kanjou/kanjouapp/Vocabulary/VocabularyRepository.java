@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.kanjou.kanjouapp.Kanji.Kanji;
 
-public interface VocabularyRepository extends JpaRepository<Kanji, Long>{
-    List<Vocabulary> findVocabularyByKanji(String kanji);
+public interface VocabularyRepository extends JpaRepository<Vocabulary, Long>{
+    List<Vocabulary> findVocabularyByKanji(Kanji kanji);
 }

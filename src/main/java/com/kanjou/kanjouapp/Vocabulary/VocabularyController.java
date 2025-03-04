@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kanjou.kanjouapp.Kanji.Kanji;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 @RestController
 @RequestMapping(path = "api/v1/vocab")
 public class VocabularyController {
@@ -18,8 +24,13 @@ public class VocabularyController {
     }
 
     @GetMapping("/{kanji}")
-	public List<Vocabulary> getKanji(@PathVariable String kanji){
+	public List<Vocabulary> getVocabByKanji(@PathVariable Kanji kanji){
 		return vocabularyService.getVocabularyByKanji(kanji);
+	}
+
+    @PostMapping("/")
+	public Vocabulary saveVocabulary(@RequestBody Vocabulary vocabulary){
+		return vocabularyService.saveVocabulary(vocabulary);
 	}
 
 }

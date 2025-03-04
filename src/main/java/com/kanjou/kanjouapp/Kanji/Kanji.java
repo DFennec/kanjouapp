@@ -1,11 +1,19 @@
 package com.kanjou.kanjouapp.Kanji;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.lang.NonNull;
 
+import com.kanjou.kanjouapp.Vocabulary.Vocabulary;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -20,12 +28,14 @@ public class Kanji {
     private String kanji;
     private Integer jlptLevel;
 
+    @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Vocabulary> vocabulary = new ArrayList<Vocabulary>();
 
 
-
-        public Kanji(@NonNull String kanji, Integer jlptLevel) {
+        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary ) {
             this.kanji = kanji;
             this.jlptLevel = jlptLevel;
+            this.vocabulary = vocabulary; 
         }
 
         public Kanji() {
