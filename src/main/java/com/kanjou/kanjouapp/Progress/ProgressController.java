@@ -35,7 +35,7 @@ public class ProgressController {
 		return progressService.getProgressByKanjiAndStudent(kanji, student);
 	}
 
-	@PostMapping("")
+	@PostMapping("/")
 	public Progress saveProgress(@RequestBody Progress progress) {
 		return progressService.saveProgress(progress);
 	}

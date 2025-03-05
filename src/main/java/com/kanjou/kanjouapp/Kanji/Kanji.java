@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.springframework.lang.NonNull;
 
+import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
+import com.kanjou.kanjouapp.Onyomi.Onyomi;
 import com.kanjou.kanjouapp.Progress.Progress;
+import com.kanjou.kanjouapp.Romaji.Romaji;
 import com.kanjou.kanjouapp.Vocabulary.Vocabulary;
 
 import jakarta.persistence.CascadeType;
@@ -33,12 +36,22 @@ public class Kanji {
     private List<Vocabulary> vocabulary = new ArrayList<Vocabulary>();
     @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Progress> progress = new ArrayList<Progress>();
+    
+    @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Kunyomi> kunyomi = new ArrayList<Kunyomi>();
+    @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Onyomi> onyomi = new ArrayList<Onyomi>();
+    @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Romaji> romaji = new ArrayList<Romaji>();
 
-        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary, List<Progress> progress) {
+        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary, List<Progress> progress, List<Kunyomi> kunyomi, List<Onyomi> onyomi, List<Romaji> romaji) {
             this.kanji = kanji;
             this.jlptLevel = jlptLevel;
             this.vocabulary = vocabulary; 
             this.progress = progress;
+            this.kunyomi = kunyomi;
+            this.onyomi = onyomi;
+            this.romaji = romaji;
         }
 
         public Kanji() {
@@ -47,6 +60,18 @@ public class Kanji {
 
         public Long getId() {
             return id;
+        }
+
+        public List<Kunyomi> getKunyomi() {
+            return kunyomi;
+        }
+
+        public List<Onyomi> getOnyomi() {
+            return onyomi;
+        }
+
+        public List<Romaji> getRomaji() {
+            return romaji;
         }
 
         public List<Vocabulary> getVocabulary() {
