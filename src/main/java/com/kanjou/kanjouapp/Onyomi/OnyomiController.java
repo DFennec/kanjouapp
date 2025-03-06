@@ -28,7 +28,7 @@ public class OnyomiController {
 		return onyomiService.getOnyomiByKanji(kanji);
 	}
 
-    @GetMapping("/kun/{onyomi}")
+    @GetMapping("/on/{onyomi}")
 	public List<Kanji> getKanjiByOnyomi(@PathVariable Onyomi onyomi){
         return onyomiService.getKanjiByOnyomi(onyomi);
 	}

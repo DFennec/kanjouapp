@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.lang.NonNull;
 
 import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
+import com.kanjou.kanjouapp.Meaning.Meaning;
 import com.kanjou.kanjouapp.Onyomi.Onyomi;
 import com.kanjou.kanjouapp.Progress.Progress;
 import com.kanjou.kanjouapp.Romaji.Romaji;
@@ -43,8 +44,10 @@ public class Kanji {
     private List<Onyomi> onyomi = new ArrayList<Onyomi>();
     @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Romaji> romaji = new ArrayList<Romaji>();
+    @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Meaning> meaning = new ArrayList<Meaning>();
 
-        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary, List<Progress> progress, List<Kunyomi> kunyomi, List<Onyomi> onyomi, List<Romaji> romaji) {
+        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary, List<Progress> progress, List<Kunyomi> kunyomi, List<Onyomi> onyomi, List<Romaji> romaji, List<Meaning> meaning) {
             this.kanji = kanji;
             this.jlptLevel = jlptLevel;
             this.vocabulary = vocabulary; 
@@ -52,6 +55,7 @@ public class Kanji {
             this.kunyomi = kunyomi;
             this.onyomi = onyomi;
             this.romaji = romaji;
+            this.meaning = meaning;
         }
 
         public Kanji() {
