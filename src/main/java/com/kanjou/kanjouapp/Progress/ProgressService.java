@@ -6,15 +6,23 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.kanjou.kanjouapp.Kanji.Kanji;
+import com.kanjou.kanjouapp.Kanji.KanjiRepository;
 import com.kanjou.kanjouapp.Student.Student;
+import com.kanjou.kanjouapp.Student.StudentRepository;
 
 @Service
 public class ProgressService {
 
 	private final ProgressRepository progressRepository;
 
-	public ProgressService(ProgressRepository studentRepository){
-		this.progressRepository = studentRepository;
+	private final StudentRepository studentRepository;
+
+	private final KanjiRepository kanjiRepository;
+
+	public ProgressService(ProgressRepository progressRepository,KanjiRepository kanjiRepository,StudentRepository studentRepository){
+		this.progressRepository = progressRepository;
+		this.studentRepository=studentRepository;
+		this.kanjiRepository=kanjiRepository;
 	}
 
 
@@ -30,17 +38,17 @@ public class ProgressService {
 		return progressRepository.findProgressByStudent(student);
 	}
 
-	public Progress getProgressByKanjiAndStudent(Kanji kanji, Student student){//to get the progress of a student in a specific kanji
-		
-		List<Progress>findProgress=progressRepository.findProgressByStudent(student);
-	
-		if(student==null){
-			throw new IllegalStateException("Student not found.");
-		}else if (findProgress.isEmpty()){
-			throw new IllegalStateException("No progress found.");
+	public Progress getProgressByKanjiAndStudent(Long kanjiId, Long studentId) {
+		Optional<Kanji> kanji = kanjiRepository.findById(kanjiId);
+		Optional<Student> student = studentRepository.findById(studentId);
+		if(!kanji.isPresent()){
+			throw new IllegalStateException("Kanji not found.");
 		}
-
-		return progressRepository.findProgressByKanjiAndStudent(kanji, student).get();
+		if(!student.isPresent()){
+			throw new IllegalStateException("Student not found.");
+		}
+		return progressRepository.findProgressByKanjiAndStudentOpt(kanji, student)
+		.orElseThrow(()->new IllegalStateException("Progress not found."));
 	}
 
 

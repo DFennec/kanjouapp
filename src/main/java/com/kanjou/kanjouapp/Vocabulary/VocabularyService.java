@@ -3,7 +3,6 @@ package com.kanjou.kanjouapp.Vocabulary;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.kanjou.kanjouapp.Kanji.Kanji;
 import com.kanjou.kanjouapp.Kanji.KanjiRepository;
@@ -19,15 +18,16 @@ public class VocabularyService {
 		this.kanjiRepository = kanjiRepository;
 	}
 
-	public List<Vocabulary> getVocabularyByKanji(@PathVariable String kanji) {
+	public List<Vocabulary> getVocabularyByKanji(String kanji) {
 		Kanji kanjiEntity = kanjiRepository.findKanjiByKanji(kanji)
-		.orElseThrow(() -> new IllegalStateException("Kanji not found."));
-		List<Vocabulary> vocabByKanji=vocabularyRepository.findVocabularyByKanji(kanjiEntity);
-		if(vocabByKanji.size()>0){
-			return vocabByKanji;
+			.orElseThrow(() -> new IllegalStateException("Kanji not found."));
+		List<Vocabulary> vocabByKanji = vocabularyRepository.findVocabularyByKanji(kanjiEntity);
+		if (vocabByKanji.isEmpty()) {
+			throw new IllegalStateException("There's no such kanji.");
 		}
-		throw new IllegalStateException("There's no such kanji.");
+		return vocabByKanji;
 	}
+
 	public Vocabulary saveVocabulary(Vocabulary vocabulary) {
 		return vocabularyRepository.save(vocabulary);
 	}

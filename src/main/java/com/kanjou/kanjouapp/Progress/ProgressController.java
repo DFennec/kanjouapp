@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kanjou.kanjouapp.Kanji.Kanji;
 import com.kanjou.kanjouapp.Student.Student;
 
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,8 +30,8 @@ public class ProgressController {
 	}
 
 	@GetMapping("/")
-	public Progress getProgressByProgress(@RequestParam Kanji kanji, @RequestParam Student student) {
-		return progressService.getProgressByKanjiAndStudent(kanji, student);
+	public Progress getProgressByKanjiAndStudent(@RequestParam Long kanjiId, @RequestParam Long studentId) {
+		return progressService.getProgressByKanjiAndStudent(kanjiId, studentId);
 	}
 
 	@PostMapping("/")
