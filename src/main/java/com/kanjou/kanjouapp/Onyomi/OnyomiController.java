@@ -24,12 +24,12 @@ public class OnyomiController {
     }
 
     @GetMapping("/kan/{kanji}")
-	public List<Onyomi> getOnyomiByKanji(@PathVariable Kanji kanji){
+	public List<Onyomi> getOnyomiByKanji(@PathVariable String kanji){
 		return onyomiService.getOnyomiByKanji(kanji);
 	}
 
     @GetMapping("/on/{onyomi}")
-	public List<Kanji> getKanjiByOnyomi(@PathVariable Onyomi onyomi){
+	public List<Kanji> getKanjiByOnyomi(@PathVariable String onyomi){
         return onyomiService.getKanjiByOnyomi(onyomi);
 	}
 

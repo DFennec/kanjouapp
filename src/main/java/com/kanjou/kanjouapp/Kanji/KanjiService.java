@@ -22,9 +22,8 @@ public class KanjiService {
 	}
 
 	public List<Kanji> getKanjiByjlptLevel(Integer jlptLevel) {
-		if(jlptLevel>6 && jlptLevel<0 ){
-			List<Kanji> kanjiByJLPT=kanjiRepository.findKanjiByjlptLevel(jlptLevel);
-			return kanjiByJLPT;
+		if (jlptLevel >= 1 && jlptLevel <= 5) {
+			return kanjiRepository.findKanjiByjlptLevel(jlptLevel);
 		}
 		throw new IllegalStateException("JLPT levels go from 5 to 1.");
 	}

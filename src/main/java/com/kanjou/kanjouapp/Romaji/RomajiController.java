@@ -24,12 +24,12 @@ public class RomajiController {
     }
 
     @GetMapping("/kan/{kanji}")
-	public List<Romaji> getRomajiByKanji(@PathVariable Kanji kanji){
+	public List<Romaji> getRomajiByKanji(@PathVariable String kanji){
 		return romajiService.getRomajiByKanji(kanji);
 	}
 
     @GetMapping("/rom/{Romaji}")
-	public List<Kanji> getKanjiByRomaji(@PathVariable Romaji romaji){
+	public List<Kanji> getKanjiByRomaji(@PathVariable String romaji){
         return romajiService.getKanjiByRomaji(romaji);
 	}
 

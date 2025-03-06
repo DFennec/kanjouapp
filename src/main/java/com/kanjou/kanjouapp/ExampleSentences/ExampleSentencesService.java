@@ -21,4 +21,8 @@ public class ExampleSentencesService {
 		}
 		throw new IllegalStateException("No sentences found.");
 	}
+
+	public ExampleSentences saveExample(ExampleSentences example) {
+		return exampleSentences.save(example);
+	}
 }

@@ -24,7 +24,7 @@ public class MeaningController {
     }
 
     @GetMapping("/kan/{kanji}")
-	public List<Meaning> getMeaningByKanji(@PathVariable Kanji kanji){
+	public List<Meaning> getMeaningByKanji(@PathVariable String kanji){
 		return meaningService.getMeaningByKanji(kanji);
 	}
 

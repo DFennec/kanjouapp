@@ -8,5 +8,5 @@ import com.kanjou.kanjouapp.Kanji.Kanji;
 
 public interface KunyomiRepository extends JpaRepository<Kunyomi, Long>{
     List<Kunyomi> findKunyomiByKanji(Kanji kanji);
-    List<Kanji> findKanjiByKunyomi(Kunyomi kunyomi);
+    List<Kanji> findKanjiByKunyomi(String kunyomi);
 }

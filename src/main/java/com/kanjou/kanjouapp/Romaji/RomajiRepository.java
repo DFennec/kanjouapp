@@ -8,5 +8,5 @@ import com.kanjou.kanjouapp.Kanji.Kanji;
 
 public interface RomajiRepository extends JpaRepository<Romaji, Long>{
     List<Romaji> findRomajiByKanji(Kanji kanji);
-    List<Kanji> findKanjiByRomaji(Romaji romaji);
+    List<Kanji> findKanjiByRomaji(String romaji);
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kanjou.kanjouapp.Kanji.Kanji;
+import com.kanjou.kanjouapp.Kanji.KanjiRepository;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,17 +20,17 @@ public class KunyomiController {
     
     private final KunyomiService kunyomiService;
 
-    public KunyomiController(KunyomiService kunyomiService){
+    public KunyomiController(KunyomiService kunyomiService, KanjiRepository kanjiRepository){
         this.kunyomiService = kunyomiService;
     }
 
     @GetMapping("/kan/{kanji}")
-	public List<Kunyomi> getKunyomiByKanji(@PathVariable Kanji kanji){
-		return kunyomiService.getKunyomiByKanji(kanji);
-	}
+    public List<Kunyomi> getKunyomiByKanji(@PathVariable String kanji) {
+        return kunyomiService.getKunyomiByKanji(kanji);
+    }
 
     @GetMapping("/kun/{kunyomi}")
-	public List<Kanji> getKanjiByKunyomi(@PathVariable Kunyomi kunyomi){
+	public List<Kanji> getKanjiByKunyomi(@PathVariable String kunyomi){
         return kunyomiService.getKanjiByKunyomi(kunyomi);
 	}
 
