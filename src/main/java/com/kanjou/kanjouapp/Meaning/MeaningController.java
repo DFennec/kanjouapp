@@ -29,9 +29,9 @@ public class MeaningController {
 	}
 
     @GetMapping("/men/{meaning}")
-	public List<Kanji> getKanjiByMeaning(@PathVariable Meaning meaning){
+    public List<Kanji> getKanjiByMeaning(@PathVariable String meaning) {
         return meaningService.getKanjiByMeaning(meaning);
-	}
+    }
 
     @PostMapping("/")
 	public Meaning saveMeaning(@RequestBody Meaning meaning){

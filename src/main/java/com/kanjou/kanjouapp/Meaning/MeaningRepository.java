@@ -8,5 +8,5 @@ import com.kanjou.kanjouapp.Kanji.Kanji;
 
 public interface MeaningRepository extends JpaRepository<Meaning, Long>{
     List<Meaning> findMeaningByKanji(Kanji kanji);
-    List<Kanji> findKanjiByMeaning(Meaning meaning);
+    List<Kanji> findKanjiByMeaning(String meaning);
 }

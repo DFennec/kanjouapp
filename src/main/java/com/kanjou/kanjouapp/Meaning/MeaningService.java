@@ -27,12 +27,12 @@ public class MeaningService {
 		}
 		throw new IllegalStateException("There's no such kanji.");
 	}
-	public List<Kanji> getKanjiByMeaning(Meaning meaning) {
-		List<Kanji> kanjiByMeaning=meaningRepository.findKanjiByMeaning(meaning);
-		if(kanjiByMeaning.size()>0){
-			return kanjiByMeaning;
+	public List<Kanji> getKanjiByMeaning(String meaning) {
+		List<Kanji> kanjiByMeaning = meaningRepository.findKanjiByMeaning(meaning);
+		if (kanjiByMeaning.isEmpty()) {
+			throw new IllegalStateException("There's no such meaning.");
 		}
-		throw new IllegalStateException("There's no such Meaning.");
+		return kanjiByMeaning;
 	}
 	public Meaning saveMeaning(Meaning meaning) {
 		return meaningRepository.save(meaning);

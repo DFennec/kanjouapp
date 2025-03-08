@@ -28,10 +28,10 @@ public class RomajiController {
 		return romajiService.getRomajiByKanji(kanji);
 	}
 
-    @GetMapping("/rom/{Romaji}")
-	public List<Kanji> getKanjiByRomaji(@PathVariable String romaji){
+    @GetMapping("/rom/{romaji}")
+    public List<Kanji> getKanjiByRomaji(@PathVariable String romaji) {
         return romajiService.getKanjiByRomaji(romaji);
-	}
+    }
 
     @PostMapping("/")
 	public Romaji saveRomaji(@RequestBody Romaji romaji){
