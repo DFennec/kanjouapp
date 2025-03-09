@@ -13,7 +13,13 @@ import jakarta.persistence.ManyToOne;
 
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "romaji")
 public class Romaji {
@@ -26,16 +32,6 @@ public class Romaji {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "kanji_id")
     private Kanji kanji;
-
-    public Romaji(String romaji, Kanji kanji) {
-        this.romaji = romaji;
-        this.kanji = kanji;
-    }
-
-
-    public Romaji() {
-
-    }
 
     public Kanji getKanji() {
         return kanji;

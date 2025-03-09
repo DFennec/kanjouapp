@@ -13,7 +13,13 @@ import jakarta.persistence.ManyToOne;
 
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "kunyomi")
 public class Kunyomi {
@@ -26,16 +32,6 @@ public class Kunyomi {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "kanji_id")
     private Kanji kanji;
-
-    public Kunyomi(String kunyomi, Kanji kanji) {
-        this.kunyomi = kunyomi;
-        this.kanji = kanji;
-    }
-
-
-    public Kunyomi() {
-
-    }
 
     public Kanji getKanji() {
         return kanji;

@@ -16,7 +16,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name ="student")
 public class Student {
@@ -38,28 +44,8 @@ public class Student {
     @OneToMany(mappedBy="student", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Progress> progress = new ArrayList<Progress>();
 
-    public Student(String name, String email, String password, LocalDate dateOfBrith) {
-
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBrith;
-    }
-
     public List<Progress> getProgress() {
         return progress;
-    }
-
-    public Student(Long id, String name, String email, String password, LocalDate dateOfBrith) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBrith;
-    }
-
-    public Student(){
-
     }
 
     public Long getId() {

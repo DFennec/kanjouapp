@@ -11,5 +11,4 @@ import com.kanjou.kanjouapp.Student.Student;
 public interface ProgressRepository extends JpaRepository<Progress, Long>{
     List<Progress> findProgressByStudent(Student student);
     Optional<Progress> findProgressByKanjiAndStudent(Kanji kanji, Student student);
-    Optional<Progress> findProgressByKanjiAndStudentOpt(Optional<Kanji> kanji, Optional<Student> student);
 }

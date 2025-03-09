@@ -12,7 +12,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name ="progress")
 public class Progress {
@@ -27,16 +33,6 @@ public class Progress {
     @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private Kanji kanji;
     private Integer progress;
-
-    public Progress(Student student, Kanji kanji, Integer progress) {
-        this.student= student;
-        this.kanji=kanji;
-        this.progress=progress;
-    }
-
-    public Progress(){
-
-    }
 
     public Student getStudent() {
         return student;

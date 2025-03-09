@@ -3,8 +3,6 @@ package com.kanjou.kanjouapp.Vocabulary;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.lang.NonNull;
-
 import com.kanjou.kanjouapp.ExampleSentences.ExampleSentences;
 import com.kanjou.kanjouapp.Kanji.Kanji;
 
@@ -19,7 +17,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "vocabulary")
 public class Vocabulary {
@@ -36,22 +40,12 @@ public class Vocabulary {
     @JoinColumn(name = "kanji_id")
     private Kanji kanji;
 
-    public Vocabulary(@NonNull String word, List<ExampleSentences> exampleSentences, Kanji kanji) {
-        this.word = word;
-        this.exampleSentences = exampleSentences;
-        this.kanji = kanji;
-    }
-
     public List<ExampleSentences> getExampleSentences() {
         return exampleSentences;
     }
 
     public Kanji getKanji() {
         return kanji;
-    }
-
-    public Vocabulary() {
-
     }
 
     public Long getId() {

@@ -14,6 +14,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "onyomi")
 public class Onyomi {
@@ -26,16 +33,6 @@ public class Onyomi {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "kanji_id")
     private Kanji kanji;
-
-    public Onyomi(String onyomi, Kanji kanji) {
-        this.onyomi = onyomi;
-        this.kanji = kanji;
-    }
-
-
-    public Onyomi() {
-
-    }
 
     public Kanji getKanji() {
         return kanji;

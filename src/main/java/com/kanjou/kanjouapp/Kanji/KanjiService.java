@@ -21,9 +21,9 @@ public class KanjiService {
 		throw new IllegalStateException("There's no such kanji.");
 	}
 
-	public List<Kanji> getKanjiByjlptLevel(Integer jlptLevel) {
-		if (jlptLevel >= 1 && jlptLevel <= 5) {
-			return kanjiRepository.findKanjiByjlptLevel(jlptLevel);
+	public List<Kanji> getKanjiByJLPT(Integer JLPT) {
+		if (JLPT >= 1 && JLPT <= 5) {
+			return kanjiRepository.findKanjiByJLPT(JLPT);
 		}
 		throw new IllegalStateException("JLPT levels go from 5 to 1.");
 	}
@@ -33,6 +33,7 @@ public class KanjiService {
 		if(kanjiByKanji.isPresent()){
 			throw new IllegalStateException("Kanji already stored.");
 		}
+		System.out.println("AQUI ESTA EL DEBUG"+ kanji.getJLPT());
 		return kanjiRepository.save(kanji);
 	}
 

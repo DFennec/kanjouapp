@@ -3,8 +3,8 @@ package com.kanjou.kanjouapp.Kanji;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
 import com.kanjou.kanjouapp.Meaning.Meaning;
 import com.kanjou.kanjouapp.Onyomi.Onyomi;
@@ -21,7 +21,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "kanji")
 public class Kanji {
@@ -31,7 +37,8 @@ public class Kanji {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kanji_sequence")
     private Long id;
     private String kanji;
-    private Integer jlptLevel;
+    @JsonProperty("jlpt")
+    private Integer JLPT;
 
     @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Vocabulary> vocabulary = new ArrayList<Vocabulary>();
@@ -47,23 +54,41 @@ public class Kanji {
     @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Meaning> meaning = new ArrayList<Meaning>();
 
-        public Kanji(@NonNull String kanji, Integer jlptLevel, List<Vocabulary> vocabulary, List<Progress> progress, List<Kunyomi> kunyomi, List<Onyomi> onyomi, List<Romaji> romaji, List<Meaning> meaning) {
-            this.kanji = kanji;
-            this.jlptLevel = jlptLevel;
-            this.vocabulary = vocabulary; 
-            this.progress = progress;
-            this.kunyomi = kunyomi;
-            this.onyomi = onyomi;
-            this.romaji = romaji;
-            this.meaning = meaning;
-        }
-
-        public Kanji() {
-
-        }
 
         public Long getId() {
             return id;
+        }
+
+        public void setKanji(String kanji) {
+            this.kanji = kanji;
+        }
+
+        public void setJLPT(Integer jLPT) {
+            JLPT = jLPT;
+        }
+
+        public void setVocabulary(List<Vocabulary> vocabulary) {
+            this.vocabulary = vocabulary;
+        }
+
+        public void setProgress(List<Progress> progress) {
+            this.progress = progress;
+        }
+
+        public void setKunyomi(List<Kunyomi> kunyomi) {
+            this.kunyomi = kunyomi;
+        }
+
+        public void setOnyomi(List<Onyomi> onyomi) {
+            this.onyomi = onyomi;
+        }
+
+        public void setRomaji(List<Romaji> romaji) {
+            this.romaji = romaji;
+        }
+
+        public void setMeaning(List<Meaning> meaning) {
+            this.meaning = meaning;
         }
 
         public List<Kunyomi> getKunyomi() {
@@ -90,8 +115,8 @@ public class Kanji {
             return kanji;
         }
 
-        public Integer getJlptLevel() {
-            return jlptLevel;
+        public Integer getJLPT() {
+            return JLPT;
         }
 
     }

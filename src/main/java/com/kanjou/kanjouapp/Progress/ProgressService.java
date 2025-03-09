@@ -39,15 +39,9 @@ public class ProgressService {
 	}
 
 	public Progress getProgressByKanjiAndStudent(Long kanjiId, Long studentId) {
-		Optional<Kanji> kanji = kanjiRepository.findById(kanjiId);
-		Optional<Student> student = studentRepository.findById(studentId);
-		if(!kanji.isPresent()){
-			throw new IllegalStateException("Kanji not found.");
-		}
-		if(!student.isPresent()){
-			throw new IllegalStateException("Student not found.");
-		}
-		return progressRepository.findProgressByKanjiAndStudentOpt(kanji, student)
+		Kanji kanji = kanjiRepository.findById(kanjiId)		.orElseThrow(()->new IllegalStateException("Kanji not found."));
+		Student student = studentRepository.findById(studentId)		.orElseThrow(()->new IllegalStateException("Student not found."));
+		return progressRepository.findProgressByKanjiAndStudent(kanji, student)
 		.orElseThrow(()->new IllegalStateException("Progress not found."));
 	}
 

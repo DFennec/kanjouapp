@@ -12,7 +12,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "example_sentences")
 public class ExampleSentences {
@@ -28,15 +34,6 @@ public class ExampleSentences {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "vocabulary_id")
     private Vocabulary vocabulary;
-
-    public ExampleSentences(String sentence, String translation, Vocabulary vocabulary) {
-        this.sentence = sentence;
-        this.translation = translation;
-        this.vocabulary = vocabulary;
-    }
-
-    public ExampleSentences() {
-    }
 
     public Long getId() {
         return id;
