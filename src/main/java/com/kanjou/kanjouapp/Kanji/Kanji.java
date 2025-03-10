@@ -3,7 +3,7 @@ package com.kanjou.kanjouapp.Kanji;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
 import com.kanjou.kanjouapp.Meaning.Meaning;
@@ -102,7 +102,7 @@ public class Kanji {
         // public List<Romaji> getRomaji() {
         //     return romaji;
         // }
-
+        @JsonIgnore
         public List<Vocabulary> getVocabulary() {
             return vocabulary;
         }

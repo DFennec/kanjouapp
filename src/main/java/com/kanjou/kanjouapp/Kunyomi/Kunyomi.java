@@ -1,5 +1,6 @@
 package com.kanjou.kanjouapp.Kunyomi;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kanjou.kanjouapp.Kanji.Kanji;
 
 import jakarta.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class Kunyomi {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "kanji_id")
     private Kanji kanji;
-
+    @JsonIgnore
     public Kanji getKanji() {
         return kanji;
     }
