@@ -32,6 +32,7 @@ public class Vocabulary {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vocabulary_sequence")
     private Long id;
     private String word;
+    private String translation;
 
     @OneToMany(mappedBy="vocabulary", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ExampleSentences> exampleSentences = new ArrayList<ExampleSentences>();
@@ -54,5 +55,11 @@ public class Vocabulary {
 
     public String getWord() {
         return word;
+    }
+    public void setWord(String word) {
+        this.word = word;
+    }
+    public void setTranslation(String translation) {
+        this.translation = translation;
     }
 }

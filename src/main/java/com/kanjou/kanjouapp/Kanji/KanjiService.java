@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class KanjiService {
@@ -29,14 +28,6 @@ public class KanjiService {
 		}
 		throw new IllegalStateException("JLPT levels go from 5 to 1.");
 	}
-/*
-	public String updateRegistries(){
-		ObjectMapper objectMapper = new ObjectMapper();
-		Kanji kanji=objectMapper.readValue(response,kanji);
-
-		saveKanji(kanji);
-		return "Kanji registries updated.";
-	}*/
 	public Kanji saveKanji(Kanji kanji) {
 		Optional<Kanji> kanjiByKanji=kanjiRepository.findKanjiByKanji(kanji.getKanji());
 		if(kanjiByKanji.isPresent()){

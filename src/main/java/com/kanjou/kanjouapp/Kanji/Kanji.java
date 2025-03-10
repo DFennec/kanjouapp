@@ -9,7 +9,7 @@ import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
 import com.kanjou.kanjouapp.Meaning.Meaning;
 import com.kanjou.kanjouapp.Onyomi.Onyomi;
 import com.kanjou.kanjouapp.Progress.Progress;
-import com.kanjou.kanjouapp.Romaji.Romaji;
+// import com.kanjou.kanjouapp.Romaji.Romaji;
 import com.kanjou.kanjouapp.Vocabulary.Vocabulary;
 
 import jakarta.persistence.CascadeType;
@@ -49,8 +49,8 @@ public class Kanji {
     private List<Kunyomi> kunyomi = new ArrayList<Kunyomi>();
     @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Onyomi> onyomi = new ArrayList<Onyomi>();
-    @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Romaji> romaji = new ArrayList<Romaji>();
+    // @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    // private List<Romaji> romaji = new ArrayList<Romaji>();
     @OneToMany(mappedBy="kanji", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Meaning> meaning = new ArrayList<Meaning>();
 
@@ -83,9 +83,9 @@ public class Kanji {
             this.onyomi = onyomi;
         }
 
-        public void setRomaji(List<Romaji> romaji) {
-            this.romaji = romaji;
-        }
+        // public void setRomaji(List<Romaji> romaji) {
+        //     this.romaji = romaji;
+        // }
 
         public void setMeaning(List<Meaning> meaning) {
             this.meaning = meaning;
@@ -99,9 +99,9 @@ public class Kanji {
             return onyomi;
         }
 
-        public List<Romaji> getRomaji() {
-            return romaji;
-        }
+        // public List<Romaji> getRomaji() {
+        //     return romaji;
+        // }
 
         public List<Vocabulary> getVocabulary() {
             return vocabulary;
