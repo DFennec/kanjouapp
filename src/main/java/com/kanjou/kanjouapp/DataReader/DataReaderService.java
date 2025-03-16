@@ -29,7 +29,6 @@ public class DataReaderService {
 
     public void bulkSaveKanji() {
         String jsonGlobal = restTemplate.getForObject("https://kanjiapi.dev/v1/kanji/all", String.class);
-        System.out.println("EL JSON: " + jsonGlobal);
         try {
             List<String> kanjiList = objectMapper.readValue(jsonGlobal, new TypeReference<List<String>>() {});
 

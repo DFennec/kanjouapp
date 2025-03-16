@@ -27,6 +27,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "vocabulary")
 public class Vocabulary {
+
     @Id
     @SequenceGenerator(name = "vocabulary_sequence", sequenceName = "vocabulary_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vocabulary_sequence")
