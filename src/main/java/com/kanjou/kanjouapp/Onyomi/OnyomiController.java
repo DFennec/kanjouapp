@@ -29,9 +29,9 @@ public class OnyomiController {
 	}
 
     @GetMapping("/on/{onyomi}")
-	public List<Kanji> getKanjiByOnyomi(@PathVariable String onyomi){
+    public List<Kanji> getKanjiByOnyomi(@PathVariable String onyomi) {
         return onyomiService.getKanjiByOnyomi(onyomi);
-	}
+    }
 
     @PostMapping("/")
 	public Onyomi saveOnyomi(@RequestBody Onyomi onyomi){

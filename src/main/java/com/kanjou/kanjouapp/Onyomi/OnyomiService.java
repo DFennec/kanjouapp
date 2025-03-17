@@ -27,13 +27,15 @@ public class OnyomiService {
 		}
 		throw new IllegalStateException("There's no such kanji.");
 	}
+
 	public List<Kanji> getKanjiByOnyomi(String onyomi) {
-		List<Kanji> kanjiByonyomi=onyomiRepository.findKanjiByOnyomi(onyomi);
-		if(kanjiByonyomi.size()>0){
-			return kanjiByonyomi;
-		}
-		throw new IllegalStateException("There's no such Onyomi.");
-	}
+        List<Kanji> kanjiByOnyomi = onyomiRepository.findKanjiByOnyomi(onyomi);
+        if (kanjiByOnyomi.isEmpty()) {
+            throw new IllegalStateException("There's no such onyomi.");
+        }
+        return kanjiByOnyomi;
+    }
+	
 	public Onyomi saveOnyomi(Onyomi onyomi) {
 		return onyomiRepository.save(onyomi);
 	}

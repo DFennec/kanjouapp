@@ -32,7 +32,7 @@ public class MeaningController {
     public List<Kanji> getKanjiByMeaning(@PathVariable String meaning) {
         return meaningService.getKanjiByMeaning(meaning);
     }
-
+    
     @PostMapping("/")
 	public Meaning saveMeaning(@RequestBody Meaning meaning){
 		return meaningService.saveMeaning(meaning);

@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
+
 
 @Service
 public class KanjiService {
@@ -28,6 +30,7 @@ public class KanjiService {
 		}
 		throw new IllegalStateException("JLPT levels go from 5 to 1.");
 	}
+
 	public Kanji saveKanji(Kanji kanji) {
 		Optional<Kanji> kanjiByKanji=kanjiRepository.findKanjiByKanji(kanji.getKanji());
 		if(kanjiByKanji.isPresent()){

@@ -36,7 +36,7 @@ public class KanjiController {
     public List<Kanji> getKanjiByJLPT(@PathVariable Integer JLPT){
 		return kanjiService.getKanjiByJLPT(JLPT);
 	}
-
+    
     @PostMapping("/bulk")
     public void fetchAndSaveKanji() {
         kanjiDataService.bulkSaveKanji();
