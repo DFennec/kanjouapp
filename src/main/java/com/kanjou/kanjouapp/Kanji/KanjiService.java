@@ -25,10 +25,10 @@ public class KanjiService {
 	}
 
 	public List<Kanji> getKanjiByJLPT(Integer JLPT) {
-		if (JLPT >= 1 && JLPT <= 5) {
+		if (JLPT >= 0 && JLPT <= 4) {
 			return kanjiRepository.findKanjiByJLPT(JLPT);
 		}
-		throw new IllegalStateException("JLPT levels go from 5 to 1.");
+		throw new IllegalStateException("JLPT levels go from 4 to 0.");
 	}
 
 	public Kanji saveKanji(Kanji kanji) {
