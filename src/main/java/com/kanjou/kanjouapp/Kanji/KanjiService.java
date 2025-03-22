@@ -4,10 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-
-import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
-
-
 @Service
 public class KanjiService {
 	private final KanjiRepository kanjiRepository;
