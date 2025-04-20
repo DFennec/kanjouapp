@@ -2,6 +2,7 @@ package com.kanjou.kanjouapp.Progress;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,13 +36,18 @@ public class ProgressController {
 	}
 
 	@PostMapping("/")
-	public Progress saveProgress(@RequestBody Progress progress) {
-		return progressService.saveProgress(progress);
+	public ResponseEntity<Progress> saveProgress(
+		@RequestParam Long kanjiId,
+		@RequestParam Long studentId,
+		@RequestParam Integer progress) {
+		
+		Progress savedProgress = progressService.saveProgress(kanjiId, studentId, progress);
+		return ResponseEntity.ok(savedProgress);
 	}
 
 	@PatchMapping("/")
-	public Progress updateProgress(@RequestBody Progress progress) {
-		return progressService.updateProgress(progress);
+	public Progress updateProgress(@RequestParam Long kanjiId, @RequestParam Long studentId, @RequestBody Integer progress) {
+		return progressService.updateProgress(kanjiId,studentId,progress);
 	}
 
 }

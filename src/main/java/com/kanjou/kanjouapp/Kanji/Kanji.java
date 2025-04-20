@@ -3,8 +3,10 @@ package com.kanjou.kanjouapp.Kanji;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.kanjou.kanjouapp.Kunyomi.Kunyomi;
 import com.kanjou.kanjouapp.Meaning.Meaning;
 import com.kanjou.kanjouapp.Onyomi.Onyomi;

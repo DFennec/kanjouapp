@@ -1,5 +1,8 @@
 package com.kanjou.kanjouapp.Progress;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.kanjou.kanjouapp.Kanji.Kanji;
 import com.kanjou.kanjouapp.Student.Student;
 
@@ -12,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +24,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name ="progress")
+@Table(name ="progress", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"student_id", "kanji_id"})})
 public class Progress {
 
 
@@ -28,9 +33,9 @@ public class Progress {
     @SequenceGenerator(name = "progress_sequence", sequenceName = "progress_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "progress_sequence")
     private Long id;
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Student student;
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Kanji kanji;
     private Integer progress;
 
@@ -41,7 +46,7 @@ public class Progress {
     public Kanji getKanji() {
         return kanji;
     }
-
+    @JsonIgnore
     public Integer getProgress() {
         return progress;
     }
