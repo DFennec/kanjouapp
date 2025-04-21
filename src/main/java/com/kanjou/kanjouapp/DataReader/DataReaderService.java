@@ -100,6 +100,7 @@ public class DataReaderService {
                             vocabulary.setTranslation(glossNode.asText());
                             vocabulary.setWord(written);
                             vocabulary.setKanji(kanji);
+                            //vocabulary.setHiragana##TODO
                             vocabList.add(vocabulary);
                         }
                     }
